@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fortnite Elite Academy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('https://images.unsplash.com/photo-1508610048659-6c5339ae3f8a?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      background: rgba(0,0,0,0.6);
+      padding: 20px 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      color: #00aaff;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    main {
+      background: rgba(0,0,0,0.75);
+      padding: 30px 40px;
+      border-radius: 15px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(0, 170, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .benefits {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .benefit {
+      flex: 1 1 150px;
+      background: #011627;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00aaff;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .benefit:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00dfff;
+    }
+
+    .benefit h3 {
+      margin-top: 0;
+      color: #00dfff;
+      margin-bottom: 12px;
+    }
+
+    section.welcome {
+      background-color: #0a0a23;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    section.welcome img.logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    section.welcome h2 {
+      font-size: 2.5em;
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+
+    section.welcome p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.2em;
+    }
+
+    section.welcome .banner-container {
+      margin-top: 40px;
+    }
+
+    section.welcome .banner-container img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff0044;
+    }
+
+    section.welcome .banner-container h3 {
+      margin-top: 20px;
+      color: #ff0044;
+    }
+
+    section.welcome .banner-container p {
+      font-size: 1em;
+      margin-bottom: 40px;
+    }
+
+    section.welcome .links a {
+      margin: 10px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    section.welcome .links a.discord {
+      color: #00bfff;
+    }
+
+    section.welcome .links a.youtube {
+      color: #ff4444;
+    }
+
+    section.welcome .links a.twitch {
+      color: #9146FF;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #00dfff;
+    }
+
+    input, select {
+      background: #02203c;
+      border: none;
+      border-radius: 8px;
+      color: #eee;
+      padding: 12px 15px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      background-color: #034078;
+      box-shadow: 0 0 10px #00aaff;
+    }
+
+    button {
+      background-color: #00aaff;
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #008ecc;
+    }
+
+    #msg {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #00ff99;
+      text-align: center;
+      display: none;
+    }
+
+    #error {
+      margin-top: 20px;
+      font-weight: 700;
+      color: #ff4444;
+      text-align: center;
+      display: none;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #888;
+      font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
+      max-width: 700px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Fortnite Elite Academy</h1>
+    <p>Mejora tu juego, compite y conviértete en un pro</p>
+  </header>
+
+  <main>
+    <section class="benefits">
+      <div class="benefit">
+        <h3>Entrenamiento Personalizado</h3>
+        <p>Clases adaptadas a tu nivel y estilo de juego.</p>
+      </div>
+      <div class="benefit">
+        <h3>Coaches Profesionales</h3>
+        <p>Expertos con experiencia en torneos y competitivo.</p>
+      </div>
+      <div class="benefit">
+        <h3>Comunidad Activa</h3>
+        <p>Únete a nuestro Discord y conecta con otros jugadores.</p>
+      </div>
+      <div class="benefit">
+        <h3>Torneos Exclusivos</h3>
+        <p>Participa en competiciones internas y mejora tu ranking.</p>
+      </div>
+    </section>
+
+    <section class="welcome">
+      <img src="SandroxLive.png" alt="Logo de Fortnite Elite Academy" class="logo" />
+      <h2>Bienvenido a Fortnite Elite Academy</h2>
+      <p>
+        Entrena con los mejores, compite como un profesional y mejora tus habilidades en cada partida. Nuestra academia está diseñada para llevarte al siguiente nivel con <strong>clases personalizadas</strong>, <strong>revisión de partidas</strong>, <strong>comunidad activa</strong> y <strong>torneos exclusivos</strong>.
+      </p>
+      <div class="banner-container">
+        <img src="ChatGPT Image 25 jul 2025, 22_59_21.png" alt="Banner de diseño gamer exclusivo" />
+        <h3>🎯 ¡Consigue tu propio Banner Gamer como este!</h3>
+        <p>Personaliza tu perfil con un diseño exclusivo hecho por nuestra academia.</p>
+      </div>
+      <div class="links">
+        <a href="https://discord.gg/JarDM4Ff" target="_blank" class="discord">🔗 Únete a nuestro Discord</a>
+        <a href="https://www.youtube.com/@AleGameLab" target="_blank" class="youtube">📺 YouTube</a>
+        <a href="https://www.twitch.tv/sandroxlive" target="_blank" class="twitch">🎮 Twitch</a>
+      </div>
+    </section>
+
+    <!-- FORMULARIO MOVIDO AL FINAL -->
+
+  </main>
+
+  <section style="background: rgba(0,0,0,0.75); padding: 30px 40px; border-radius: 15px; max-width: 700px; width: 100%; box-shadow: 0 0 30px rgba(0, 170, 255, 0.8); margin-top: 40px;">
+    <h2>Inscríbete y Simula Pago</h2>
+    <form id="paymentForm" novalidate>
+      <label for="nombre">Tu nombre completo</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+
+      <label for="discord">Usuario de Discord (ej: Juan#1234)</label>
+      <input type="text" id="discord" name="discord" placeholder="Usuario de Discord (ej: Juan#1234)" pattern="^.{3,32}#[0-9]{4}$" title="Formato: Nombre#1234" required />
+
+      <label for="email">Tu correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required />
+
+      <label for="nivel">Selecciona tu nivel actual</label>
+      <select id="nivel" name="nivel" required>
+        <option value="" disabled selected>Selecciona tu nivel actual</option>
+        <option value="Principiante">Principiante</option>
+        <option value="Intermedio">Intermedio</option>
+        <option value="Avanzado">Avanzado</option>
+        <option value="Profesional">Profesional</option>
+      </select>
+
+      <label for="card">Número de tarjeta</label>
+      <input type="tel" id="card" name="card" placeholder="Número de tarjeta (16 dígitos)" pattern="^\d{16}$" title="Debe contener 16 dígitos" required />
+
+      <label for="exp">Fecha de expiración (MM/AA)</label>
+      <input type="text" id="exp" name="exp" placeholder="MM/AA" pattern="^(0[1-9]|1[0-2])\/\d{2}$" title="Formato MM/AA" required />
+
+      <label for="cvv">CVV</label>
+      <input type="tel" id="cvv" name="cvv" placeholder="CVV (3 dígitos)" pattern="^\d{3}$" title="3 dígitos" required />
+
+      <button type="submit">Inscribirme al curso (5€)</button>
+    </form>
+    <div id="msg">Gracias por inscribirte. Estamos procesando tu solicitud.</div>
+    <div id="error">❌ Error inesperado en la transacción. Intenta más tarde.</div>
+  </section>
+
+  <footer>
+    &copy; 2025 Fortnite Elite Academy - Todos los derechos reservados
+  </footer>
+
+  <script>
+    const form = document.getElementById('paymentForm');
+    const msg = document.getElementById('msg');
+    const error = document.getElementById('error');
+
+    function validateForm() {
+      // Usa el método checkValidity para el formulario
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return false;
+      }
+
+      // Validar fecha de expiración: no debe ser anterior al mes actual
+      const exp = document.getElementById('exp').value;
+      const [mes, anio] = exp.split('/');
+      if (!mes || !anio) return false;
+
+      const now = new Date();
+      const currentYear = now.getFullYear() % 100; // últimos 2 dígitos año
+      const currentMonth = now.getMonth() + 1;
+
+      const expYear = parseInt(anio, 10);
+      const expMonth = parseInt(mes, 10);
+
+      if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
+        alert('La fecha de expiración debe ser igual o posterior al mes actual.');
+        return false;
+      }
+
+      return true;
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      msg.style.display = 'none';
+      error.style.display = 'none';
+
+      // Simular procesamiento
+      msg.style.display = 'block';
+
+      setTimeout(() => {
+        const isSuccess = Math.random() > 0.5;
+
+        if (isSuccess) {
+          msg.textContent = '✅ Inscripción exitosa. ¡Bienvenido a Fortnite Elite Academy!';
+          error.style.display = 'none';
+        } else {
+          msg.style.display = 'none';
+          error.style.display = 'block';
+        }
+      }, 2500);
+
+      setTimeout(() => {
+        msg.style.display = 'none';
+        error.style.display = 'none';
+        form.reset();
+      }, 5500);
+    });
+  </script>
+</body>
+</html>
